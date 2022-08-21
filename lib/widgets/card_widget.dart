@@ -13,12 +13,12 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 110,
-      height: 100,
+      width: 90,
+      height: 80,
       color: Colors.white,
       child: Column(
         children: [
-          SizedBox(height: 64, child: Image.asset(image)),
+          SizedBox(height: 50, child: Image.asset(image)),
           const SizedBox(height: 5.0),
           Text(title,
               style: const TextStyle(color: Colors.black45),
