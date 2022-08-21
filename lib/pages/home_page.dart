@@ -1,3 +1,4 @@
+import 'package:bkash/widgets/drawer_widget.dart';
 import 'package:bkash/widgets/home_body_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: const HomeBodyWidget(),
       bottomNavigationBar: const BottomNavigationBarWidget(),
+      endDrawer: const DrawerWidget(),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.qr_code, color: Colors.pink, size: 40.0),
         tooltip: 'Increment',

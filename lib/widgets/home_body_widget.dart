@@ -2,6 +2,8 @@ import 'package:bkash/widgets/home_menu_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'card_widget.dart';
+
 class HomeBodyWidget extends StatelessWidget {
   const HomeBodyWidget({
     Key? key
@@ -32,7 +34,42 @@ class HomeBodyWidget extends StatelessWidget {
                 MenuWidget(title: 'More', image: 'assets/more.jpg'),
               ],),
             ],),
-          )
+          ),
+          Card(
+            color: Colors.white,
+            margin: const EdgeInsets.only(left: 12.0, right: 12.0, bottom: 12.0),
+            child: SizedBox(
+              width: Size.infinite.width,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('My bKash'),
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: const [
+                        CardWidget(
+                            title: 'Evan Emran',
+                            image: 'assets/mobile_recharge.jpg'),
+                        CardWidget(
+                            title: 'Shwapno', image: 'assets/make_payment.jpg'),
+                        CardWidget(
+                            title: 'Internet', image: 'assets/pay_bill.jpg'),
+                        CardWidget(
+                            title: 'Card', image: 'assets/add_money.jpg'),
+                        CardWidget(
+                            title: 'Evan Emran',
+                            image: 'assets/mobile_recharge.jpg'),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
