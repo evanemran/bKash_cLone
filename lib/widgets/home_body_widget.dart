@@ -1,3 +1,4 @@
+import 'package:bkash/enums/home_menu.dart';
 import 'package:bkash/styles/AppTheme.dart';
 import 'package:bkash/widgets/appbar_widget.dart';
 import 'package:bkash/widgets/home_menu_widget.dart';
@@ -6,12 +7,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../pages/details_page.dart';
 import 'card_widget.dart';
 
 final List<String> imgList = [
-  'https://www.bkash.com/sites/default/files/userfiles/files/April2021/Campaign-02-bangla.jpg',
-  'https://www.bkash.com/sites/default/files/userfiles/files/Feb-2022/Welcome%20pack%20inner%20page.jpg',
-  'https://www.bkash.com/sites/default/files/Image%20-%20English.jpg',
+  'assets/banner_one.png',
+  'assets/banner_two.png',
+  // 'assets/banner_three.png',
+  // 'assets/banner_four.png',
 ];
 
 class HomeBodyWidget extends StatelessWidget {
@@ -21,6 +24,37 @@ class HomeBodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    List<HomeMenu> homeMenuList = [
+      HomeMenu.SEND_MONEY,
+      HomeMenu.CASH_OUT,
+      HomeMenu.TOP_UP,
+      HomeMenu.PAYMENT,
+
+      HomeMenu.ADD_MONEY,
+      HomeMenu.PAY_BILL,
+      HomeMenu.TICKETS,
+      HomeMenu.MORE,
+    ];
+
+    List<HomeMenu> mybKashList = [
+      HomeMenu.TOPUP,
+      HomeMenu.SHWAPNO,
+      HomeMenu.INTERNET,
+      HomeMenu.CARD,
+      HomeMenu.ACCOUNT,
+    ];
+
+    List<HomeMenu> suggestionList = [
+      HomeMenu.BTCL,
+      HomeMenu.AKASH,
+      HomeMenu.AJKER_DEAL,
+      HomeMenu.DARAZ,
+      HomeMenu.STYLINE,
+    ];
+
+
+
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(80.0),
@@ -35,23 +69,68 @@ class HomeBodyWidget extends StatelessWidget {
               color: Colors.white,
               padding: EdgeInsets.all(12.0),
               margin: EdgeInsets.only(bottom: 12.0),
-              child: Column(children: [
-                Row(children: const [
-                  MenuWidget(title: 'Send Money', image: 'assets/send_money.jpg'),
-                  MenuWidget(title: 'Cash Out', image: 'assets/cash_out.jpg'),
-                  MenuWidget(title: 'Top-up', image: 'assets/mobile_recharge.jpg'),
-                  MenuWidget(title: 'Payment', image: 'assets/make_payment.jpg'),
-                ],),
-                const SizedBox(height: 8.0,),
-                Row(children: const [
-                  MenuWidget(title: 'Add Money', image: 'assets/add_money.jpg'),
-                  MenuWidget(title: 'Pay Bill', image: 'assets/pay_bill.jpg'),
-                  MenuWidget(title: 'Tickets', image: 'assets/tickets.jpg'),
-                  MenuWidget(title: 'More', image: 'assets/more.jpg'),
-                ],),
-              ],),
+              child: GridView.count(
+                // Create a grid with 2 columns. If you change the scrollDirection to
+                // horizontal, this produces 2 rows.
+                crossAxisCount: 4,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                // Generate 100 widgets that display their index in the List.
+                children: List.generate(homeMenuList.length, (index) {
+                  return Center(
+                    child: InkWell(child: MenuWidget(title: homeMenuList[index].title, image: homeMenuList[index].icon),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DetailsPage(menu: homeMenuList[index],)),
+                      );
+                    },),
+                  );
+                }),
+              ),
             ),
+
+
+            //horizontal list
             Card(
+              color: Colors.white,
+              margin: const EdgeInsets.only(left: 12.0, right: 12.0, bottom: 12.0),
+              child: SizedBox(
+                width: Size.infinite.width,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Row(children: [const Expanded(child: Text('My bKash')), Text('See All', style: AppTheme.homeHintText,)],),
+                    ),
+                    Container(
+                      height: 80, //need to adjust dynamic height
+                      child: ListView.builder(
+                        itemCount: mybKashList.length,
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return InkWell(child: CardWidget(
+                              title: mybKashList[index].title,
+                              image: mybKashList[index].icon), onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => DetailsPage(menu: mybKashList[index],)),
+                            );
+                          },);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+
+            //old style
+            /*Card(
               color: Colors.white,
               margin: const EdgeInsets.only(left: 12.0, right: 12.0, bottom: 12.0),
               child: SizedBox(
@@ -85,7 +164,7 @@ class HomeBodyWidget extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
+            ),*/
 
             //will add carousal ad here
             _buildImageSlider(),
@@ -97,33 +176,31 @@ class HomeBodyWidget extends StatelessWidget {
               child: SizedBox(
                 width: Size.infinite.width,
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Row(children: [Expanded(child: Text('Suggestions')), InkWell(child: Text('See All', style: AppTheme.homeHintText,), onTap: () {showCustomBottomSheet(context);},)],),
+                      child: Row(children: [const Expanded(child: Text('Suggestions')), InkWell(child: Text('See All', style: AppTheme.homeHintText,), onTap: () {showCustomBottomSheet(context, suggestionList);},)],),
                     ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: const [
-                          CardWidget(
-                              title: 'BTCL',
-                              image: 'assets/btcl.jpg'),
-                          CardWidget(
-                              title: 'Akash', image: 'assets/akash.jpg'),
-                          CardWidget(
-                              title: 'Ajker Deal', image: 'assets/ajkerdeal.jpg'),
-                          CardWidget(
-                              title: 'Daraz', image: 'assets/daraz.jpg'),
-                          // CardWidget(
-                          //     title: 'Desco', image: 'assets/desco.png'),
-                          CardWidget(
-                              title: 'Sti Line',
-                              image: 'assets/stiline.jpg'),
-                        ],
+                    Container(
+                      height: 80, //need to adjust dynamic height
+                      child: ListView.builder(
+                        itemCount: suggestionList.length,
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return InkWell(child: CardWidget(
+                              title: suggestionList[index].title,
+                              image: suggestionList[index].icon), onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => DetailsPage(menu: suggestionList[index],)),
+                            );
+                          },);
+                        },
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -192,12 +269,10 @@ class HomeBodyWidget extends StatelessWidget {
             return Container(
               width: double.infinity,
               margin: EdgeInsets.symmetric(horizontal: 5.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(2.0),
-                image: DecorationImage(
-                  image: NetworkImage(i),
-                  fit: BoxFit.cover,
-                ),
+              child: Image.asset(
+                i,
+                height: 120,
+                fit: BoxFit.cover,
               ),
             );
           },
@@ -206,24 +281,10 @@ class HomeBodyWidget extends StatelessWidget {
     ),);
   }
 
-  void showCustomBottomSheet(BuildContext context) {
+  void showCustomBottomSheet(BuildContext context, List<HomeMenu> list) {
     showModalBottomSheet<void>(
       context: context,
       builder: (BuildContext context) {
-        List<CardWidget> list = [
-          CardWidget(
-              title: 'BTCL',
-              image: 'assets/btcl.jpg'),
-          CardWidget(
-              title: 'Akash', image: 'assets/akash.jpg'),
-          CardWidget(
-              title: 'Ajker Deal', image: 'assets/ajkerdeal.jpg'),
-          CardWidget(
-              title: 'Daraz', image: 'assets/daraz.jpg'),
-          CardWidget(
-              title: 'Sti Line',
-              image: 'assets/stiline.jpg'),
-        ];
         return Container(
           height: 400,
           color: Colors.white,
@@ -235,7 +296,9 @@ class HomeBodyWidget extends StatelessWidget {
               // Generate 100 widgets that display their index in the List.
               children: List.generate(list.length, (index) {
                 return Center(
-                  child: list[index],
+                  child: CardWidget(
+                      title: list[index].title,
+                      image: list[index].icon),
                 );
               }),
             ),

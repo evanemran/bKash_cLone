@@ -1,11 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class BottomNavigationBarWidget extends StatelessWidget {
+class BottomNavigationBarWidget extends StatefulWidget {
   final Function(int index) onPress;
   const BottomNavigationBarWidget({
     Key? key, required this.onPress,
   }) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => BottomNavigationBarWidgetState();
+}
+
+class BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
+
+  Color homeColor = Colors.white;
+  Color inboxColor = Colors.white60;
+
+  int selectedIndex = 0;
+
+  void _onBottomBarTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+
+      if(selectedIndex == 0){
+        homeColor = Colors.white;
+        inboxColor = Colors.white60;
+      }
+      else{
+        homeColor = Colors.white60;
+        inboxColor = Colors.white;
+      }
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -22,16 +49,17 @@ class BottomNavigationBarWidget extends StatelessWidget {
               MaterialButton(
                 // minWidth: 40,
                 onPressed: () {
-                    onPress(0);
-                  },
+                  widget.onPress(0);
+                  _onBottomBarTapped(0);
+                },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
-                    Icon(Icons.home_filled, color: Colors.white, size: 30.0),
+                  children: <Widget>[
+                    Icon(Icons.home_filled, color: homeColor, size: 30.0),
                     Text(
                       'Home',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: homeColor,
                       ),
                     )
                   ],
@@ -47,16 +75,17 @@ class BottomNavigationBarWidget extends StatelessWidget {
               MaterialButton(
                 // minWidth: 40,
                 onPressed:  () {
-                  onPress(1);
-                  },
+                  widget.onPress(1);
+                  _onBottomBarTapped(1);
+                },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const <Widget>[
+                  children: <Widget>[
                     Icon(Icons.mail_sharp,
-                        color: Colors.white60, size: 30.0),
+                        color: inboxColor, size: 30.0),
                     Text(
                       'Inbox',
-                      style: TextStyle(color: Colors.white60),
+                      style: TextStyle(color: inboxColor),
                     ),
                   ],
                 ),
@@ -65,4 +94,5 @@ class BottomNavigationBarWidget extends StatelessWidget {
           )),
     );
   }
+
 }

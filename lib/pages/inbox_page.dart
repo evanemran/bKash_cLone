@@ -3,6 +3,8 @@ import 'package:bkash/widgets/transactions_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../styles/AppTheme.dart';
+
 class InboxPage extends StatefulWidget {
   const InboxPage({Key? key, required this.title}) : super(key: key);
 
@@ -20,7 +22,8 @@ class _InboxPageState extends State<InboxPage> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Inbox", textAlign: TextAlign.center,),
+          centerTitle: true,
+          title: Text("Inbox", textAlign: TextAlign.center, style: AppTheme.actionBarText,),
           bottom: const TabBar(
             tabs: [
               Tab(text: "Notifications",),

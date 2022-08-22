@@ -27,7 +27,7 @@ class NotificationWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Image.asset(item.nImage, height: 140, width: double.infinity, fit: BoxFit.cover,),
+              Image.asset(item.nImage, height: 180, width: double.infinity, fit: BoxFit.cover,),
               Row(children: [Expanded(child: Padding(padding: const EdgeInsets.fromLTRB(0, 8, 0, 8), child: Text(item.nTitle, style: AppTheme.ntitleText, textAlign: TextAlign.start,),))],),
               Row(children: [Expanded(child: Padding(padding: const EdgeInsets.fromLTRB(0, 8, 0, 8), child: Text(item.nBody, style: AppTheme.nbodyText, textAlign: TextAlign.start,),))],)
             ],

@@ -35,4 +35,7 @@ class AppTheme{
 
   static final TextStyle homeHintText =
   TextStyle(fontSize: 12.0,fontWeight:FontWeight.normal, color: Colors.pink,fontFamily: "Roboto");
+
+  static final TextStyle actionBarText =
+  TextStyle(fontSize: 16.0,fontWeight:FontWeight.bold, color: Colors.white,fontFamily: "Roboto");
 }
