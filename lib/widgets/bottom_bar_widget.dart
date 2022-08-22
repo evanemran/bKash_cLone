@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
+  final Function(int index) onPress;
   const BottomNavigationBarWidget({
-    Key? key,
+    Key? key, required this.onPress,
   }) : super(key: key);
 
   @override
@@ -20,7 +21,9 @@ class BottomNavigationBarWidget extends StatelessWidget {
             children: <Widget>[
               MaterialButton(
                 // minWidth: 40,
-                onPressed: () {},
+                onPressed: () {
+                    onPress(0);
+                  },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const <Widget>[
@@ -43,7 +46,9 @@ class BottomNavigationBarWidget extends StatelessWidget {
               ),
               MaterialButton(
                 // minWidth: 40,
-                onPressed: () {},
+                onPressed:  () {
+                  onPress(1);
+                  },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const <Widget>[

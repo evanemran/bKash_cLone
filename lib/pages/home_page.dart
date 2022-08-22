@@ -1,5 +1,7 @@
+import 'package:bkash/pages/inbox_page.dart';
 import 'package:bkash/widgets/drawer_widget.dart';
 import 'package:bkash/widgets/home_body_widget.dart';
+import 'package:bkash/widgets/notifications_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +28,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int _selectedIndex = 0;
+
+  static const List<Widget> _bottomMenu = <Widget>[
+    HomeBodyWidget(),
+    InboxPage(title: "Inbox",),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -41,21 +55,21 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
+      /*appBar: const PreferredSize(
         preferredSize: Size.fromHeight(80.0),
         child: AppBarWidget(),
-      ),
-      body: const HomeBodyWidget(),
-      bottomNavigationBar: const BottomNavigationBarWidget(),
+      ),*/
+      body: _bottomMenu.elementAt(_selectedIndex),
       endDrawer: const DrawerWidget(),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.qr_code, color: Colors.pink, size: 40.0),
-        tooltip: 'Increment',
+        tooltip: 'Scan QR',
         elevation: 2.0,
         backgroundColor: Colors.white,
         onPressed: () {},
+        child: const Icon(Icons.qr_code, color: Colors.pink, size: 40.0),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,// This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomNavigationBarWidget(onPress: _onItemTapped,),// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

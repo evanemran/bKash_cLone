@@ -20,17 +20,18 @@ class DrawerWidget extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-            ),
-            child: Container(alignment:Alignment.centerLeft ,child: Column(children: [
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
               Text("bKash Menu", style: AppTheme.titleText, textAlign: TextAlign.start,),
+              const SizedBox(height: 8,),
               Text("Language - English", style: AppTheme.subtitleText, textAlign: TextAlign.start,)
-            ],),),
+            ],),
           ),
           Container(
             color: Colors.white,
-            child: Row(children: [const SizedBox(width: 8), const Icon(Icons.home_max_outlined, color: Colors.pink, size: 32.0,), Expanded(child: ListTile(
+            child: Row(children: [const SizedBox(width: 8), Tab(icon: Image.asset("assets/home.png", color: Colors.pink, height: 26,),), Expanded(child: ListTile(
               title: Text('Home', style: AppTheme.subtitleText,),
               onTap: () {
                 // Update the state of the app
@@ -40,9 +41,10 @@ class DrawerWidget extends StatelessWidget {
               },
             ))],),
           ),
+          Container(height: 1, color: Colors.black12,),
           Container(
             color: Colors.white,
-            child: Row(children: [const SizedBox(width: 8), const Icon(Icons.bar_chart, color: Colors.pink, size: 32.0,), Expanded(child: ListTile(
+            child: Row(children: [const SizedBox(width: 8), Tab(icon: Image.asset("assets/home.png", color: Colors.pink, height: 26,),), Expanded(child: ListTile(
               title: Text('Statements', style: AppTheme.subtitleText,),
               onTap: () {
                 // Update the state of the app
@@ -52,9 +54,10 @@ class DrawerWidget extends StatelessWidget {
               },
             ))],),
           ),
+          Container(height: 1, color: Colors.black12,),
           Container(
             color: Colors.white,
-            child: Row(children: [const SizedBox(width: 8), const Icon(Icons.warning_amber_rounded, color: Colors.pink, size: 32.0,), Expanded(child: ListTile(
+            child: Row(children: [const SizedBox(width: 8), Tab(icon: Image.asset("assets/home.png", color: Colors.pink, height: 26,),), Expanded(child: ListTile(
               title: Text('Limits', style: AppTheme.subtitleText,),
               onTap: () {
                 // Update the state of the app
@@ -64,9 +67,10 @@ class DrawerWidget extends StatelessWidget {
               },
             ))],),
           ),
+          Container(height: 1, color: Colors.black12,),
           Container(
             color: Colors.white,
-            child: Row(children: [const SizedBox(width: 8), const Icon(Icons.local_offer_outlined, color: Colors.pink, size: 32.0,), Expanded(child: ListTile(
+            child: Row(children: [const SizedBox(width: 8), Tab(icon: Image.asset("assets/home.png", color: Colors.pink, height: 26,),), Expanded(child: ListTile(
               title: Text('Coupons', style: AppTheme.subtitleText,),
               onTap: () {
                 // Update the state of the app
@@ -76,9 +80,10 @@ class DrawerWidget extends StatelessWidget {
               },
             ))],),
           ),
+          Container(height: 1, color: Colors.black12,),
           Container(
             color: Colors.white,
-            child: Row(children: [const SizedBox(width: 8), const Icon(Icons.group_add_outlined, color: Colors.pink, size: 32.0,), Expanded(child: ListTile(
+            child: Row(children: [const SizedBox(width: 8), Tab(icon: Image.asset("assets/home.png", color: Colors.pink, height: 26,),), Expanded(child: ListTile(
               title: Text('Refer bKash App', style: AppTheme.subtitleText,),
               onTap: () {
                 // Update the state of the app
@@ -88,9 +93,10 @@ class DrawerWidget extends StatelessWidget {
               },
             ))],),
           ),
+          Container(height: 1, color: Colors.black12,),
           Container(
             color: Colors.white,
-            child: Row(children: [const SizedBox(width: 8), const Icon(Icons.add_location_alt_outlined, color: Colors.pink, size: 32.0,), Expanded(child: ListTile(
+            child: Row(children: [const SizedBox(width: 8), Tab(icon: Image.asset("assets/home.png", color: Colors.pink, height: 26,),), Expanded(child: ListTile(
               title: Text('bKash Map', style: AppTheme.subtitleText,),
               onTap: () {
                 // Update the state of the app
@@ -100,9 +106,10 @@ class DrawerWidget extends StatelessWidget {
               },
             ))],),
           ),
+          Container(height: 1, color: Colors.black12,),
           Container(
             color: Colors.white,
-            child: Row(children: [const SizedBox(width: 8), const Icon(Icons.compass_calibration_outlined, color: Colors.pink, size: 32.0,), Expanded(child: ListTile(
+            child: Row(children: [const SizedBox(width: 8), Tab(icon: Image.asset("assets/home.png", color: Colors.pink, height: 26,),), Expanded(child: ListTile(
               title: Text('Discover bKash', style: AppTheme.subtitleText,),
               onTap: () {
                 // Update the state of the app
@@ -112,9 +119,10 @@ class DrawerWidget extends StatelessWidget {
               },
             ))],),
           ),
+          Container(height: 1, color: Colors.black12,),
           Container(
             color: Colors.white,
-            child: Row(children: [const SizedBox(width: 8), const Icon(Icons.settings, color: Colors.pink, size: 32.0,), Expanded(child: ListTile(
+            child: Row(children: [const SizedBox(width: 8), Tab(icon: Image.asset("assets/home.png", color: Colors.pink, height: 26,),), Expanded(child: ListTile(
               title: Text('Settings', style: AppTheme.subtitleText,),
               onTap: () {
                 // Update the state of the app
@@ -124,9 +132,10 @@ class DrawerWidget extends StatelessWidget {
               },
             ))],),
           ),
+          Container(height: 1, color: Colors.black12,),
           Container(
             color: Colors.white,
-            child: Row(children: [const SizedBox(width: 8), const Icon(Icons.support_agent_outlined, color: Colors.pink, size: 32.0,), Expanded(child: ListTile(
+            child: Row(children: [const SizedBox(width: 8), Tab(icon: Image.asset("assets/home.png", color: Colors.pink, height: 26,),), Expanded(child: ListTile(
               title: Text('Support', style: AppTheme.subtitleText,),
               onTap: () {
                 // Update the state of the app
@@ -136,9 +145,10 @@ class DrawerWidget extends StatelessWidget {
               },
             ))],),
           ),
+          Container(height: 1, color: Colors.black12,),
           Container(
             color: Colors.white,
-            child: Row(children: [const SizedBox(width: 8), const Icon(Icons.logout, color: Colors.pink, size: 32.0,), Expanded(child: ListTile(
+            child: Row(children: [const SizedBox(width: 8), Tab(icon: Image.asset("assets/home.png", color: Colors.pink, height: 26,),), Expanded(child: ListTile(
               title: Text('Log-out', style: AppTheme.subtitleText,),
               onTap: () {
                 // Update the state of the app

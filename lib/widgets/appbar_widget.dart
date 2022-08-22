@@ -1,14 +1,24 @@
+import 'package:bkash/widgets/appbar_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AppBarWidget extends StatelessWidget {
+
+class AppBarWidget extends StatefulWidget {
   const AppBarWidget({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<StatefulWidget> createState() => AppBarWidgetState();
+
+}
+
+class AppBarWidgetState extends State<AppBarWidget> {
+  final GlobalKey<AppBarWidgetState> appBar_key = new GlobalKey<AppBarWidgetState>();
+  @override
   Widget build(BuildContext context) {
     return AppBar(
+      key: appBar_key,
       flexibleSpace: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -75,10 +85,11 @@ class AppBarWidget extends StatelessWidget {
       actions: [
         Padding(
           padding: const EdgeInsets.only(top: 12.0, right: 12.0),
-          child: SizedBox(
-              width: 50, height: 50, child: Image.asset('assets/fly.png')),
+          child: InkWell(onTap:  Scaffold.of(context).openEndDrawer, child: SizedBox(
+              width: 50, height: 50, child: Image.asset('assets/logo.png')),),
         )
       ],
     );
   }
+
 }
