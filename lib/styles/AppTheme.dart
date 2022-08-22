@@ -26,4 +26,13 @@ class AppTheme{
 
   static final TextStyle tTrxTextRed =
   TextStyle(fontSize: 16.0,fontWeight:FontWeight.normal, color: Colors.red,fontFamily: "Roboto");
+
+  static final TextStyle offerText =
+  TextStyle(fontSize: 12.0,fontWeight:FontWeight.bold, color: Colors.black,fontFamily: "Roboto");
+
+  static final TextStyle offerVendorText =
+  TextStyle(fontSize: 12.0,fontWeight:FontWeight.bold, color: Colors.black45,fontFamily: "Roboto");
+
+  static final TextStyle homeHintText =
+  TextStyle(fontSize: 12.0,fontWeight:FontWeight.normal, color: Colors.pink,fontFamily: "Roboto");
 }

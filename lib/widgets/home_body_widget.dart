@@ -1,5 +1,7 @@
+import 'package:bkash/styles/AppTheme.dart';
 import 'package:bkash/widgets/appbar_widget.dart';
 import 'package:bkash/widgets/home_menu_widget.dart';
+import 'package:bkash/widgets/offer_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -57,9 +59,9 @@ class HomeBodyWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text('My bKash'),
+                      child: Row(children: [Expanded(child: Text('My bKash')), Text('See All', style: AppTheme.homeHintText,)],),
                     ),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -97,9 +99,9 @@ class HomeBodyWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text('Suggestions'),
+                      child: Row(children: [Expanded(child: Text('Suggestions')), InkWell(child: Text('See All', style: AppTheme.homeHintText,), onTap: () {showCustomBottomSheet(context);},)],),
                     ),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -119,6 +121,46 @@ class HomeBodyWidget extends StatelessWidget {
                           CardWidget(
                               title: 'Sti Line',
                               image: 'assets/stiline.jpg'),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+
+            Card(
+              color: Colors.white,
+              margin: const EdgeInsets.only(left: 12.0, right: 12.0, bottom: 12.0),
+              child: SizedBox(
+                width: Size.infinite.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Row(children: [Expanded(child: Text('Offers')), Text('See All', style: AppTheme.homeHintText,)],),
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: const [
+                          Card(elevation: 2, margin: EdgeInsets.all(8.0), color: Colors.white, child: OfferWidget(
+                            title: '70tk Discount',
+                            image: 'assets/bkash_panda.jpg',
+                            vendor: 'Foodpanda',),),
+                          Card(elevation: 2, margin: EdgeInsets.all(8.0), color: Colors.white, child: OfferWidget(
+                            title: '10% Discount', image: 'assets/bkash_empy.jpg', vendor: 'THE EMPYREAN',),),
+                          Card(elevation: 2, margin: EdgeInsets.all(8.0), color: Colors.white, child: OfferWidget(
+                            title: 'Buy 1 Get 1 Offer', image: 'assets/bkash_panda.jpg', vendor: 'Hotel Highgarden',),),
+                          Card(elevation: 2, margin: EdgeInsets.all(8.0), color: Colors.white, child: OfferWidget(
+                            title: 'Special Offer', image: 'assets/bkash_empy.jpg', vendor: 'Square Hospital Ltd',),),
+                          // CardWidget(
+                          //     title: 'Desco', image: 'assets/desco.png'),
+                          /*OfferWidget(
+                              title: 'See all',
+                              image: 'assets/stiline.jpg',
+                              vendor: '',),*/
                         ],
                       ),
                     )
@@ -162,5 +204,44 @@ class HomeBodyWidget extends StatelessWidget {
         );
       }).toList(),
     ),);
+  }
+
+  void showCustomBottomSheet(BuildContext context) {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        List<CardWidget> list = [
+          CardWidget(
+              title: 'BTCL',
+              image: 'assets/btcl.jpg'),
+          CardWidget(
+              title: 'Akash', image: 'assets/akash.jpg'),
+          CardWidget(
+              title: 'Ajker Deal', image: 'assets/ajkerdeal.jpg'),
+          CardWidget(
+              title: 'Daraz', image: 'assets/daraz.jpg'),
+          CardWidget(
+              title: 'Sti Line',
+              image: 'assets/stiline.jpg'),
+        ];
+        return Container(
+          height: 400,
+          color: Colors.white,
+          child: Center(
+            child: GridView.count(
+              // Create a grid with 2 columns. If you change the scrollDirection to
+              // horizontal, this produces 2 rows.
+              crossAxisCount: 3,
+              // Generate 100 widgets that display their index in the List.
+              children: List.generate(list.length, (index) {
+                return Center(
+                  child: list[index],
+                );
+              }),
+            ),
+          ),
+        );
+      },
+    );
   }
 }

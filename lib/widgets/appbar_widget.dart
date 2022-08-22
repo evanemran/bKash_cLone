@@ -86,7 +86,7 @@ class AppBarWidgetState extends State<AppBarWidget> {
         Padding(
           padding: const EdgeInsets.only(top: 12.0, right: 12.0),
           child: InkWell(onTap:  Scaffold.of(context).openEndDrawer, child: SizedBox(
-              width: 50, height: 50, child: Image.asset('assets/logo.png')),),
+              width: 40, height: 40, child: Image.asset('assets/logo.png')),),
         )
       ],
     );
