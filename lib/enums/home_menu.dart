@@ -1,10 +1,11 @@
+import 'package:bkash/widgets/send_money_widget.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../widgets/offer_widget.dart';
 
 enum HomeMenu {
   //top menu
-  SEND_MONEY('Send Money', 'assets/send_money.jpg', Text("test")),
+  SEND_MONEY('Send Money', 'assets/send_money.jpg', SendMoneyWidget()),
   CASH_OUT('Cash Out', 'assets/cash_out.jpg', Text("test")),
   TOP_UP('Top-up', 'assets/mobile_recharge.jpg', Text("test")),
   PAYMENT('Payment', 'assets/make_payment.jpg', Text("test")),
