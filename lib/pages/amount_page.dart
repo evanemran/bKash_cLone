@@ -1,4 +1,5 @@
 import 'package:bkash/enums/home_menu.dart';
+import 'package:bkash/pages/pin_page.dart';
 import 'package:bkash/widgets/purpose_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,12 @@ class _AmountPageState extends State<AmountPage> {
                     style: AppTheme.amtText,
                     decoration: InputDecoration.collapsed(hintText: "৳0", hintStyle: AppTheme.amtHintText,),
                   )),
-                  const Icon(Icons.arrow_forward, color: Colors.black45,)
+                  InkWell(onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const PinPage(menu: HomeMenu.SEND_MONEY,)),
+                    );
+                  }, child: const Icon(Icons.arrow_forward, color: Colors.black45, size: 32,),)
                 ],),),
                 Row(children: [Expanded(child: Padding(padding: EdgeInsets.fromLTRB(12,8,0,12), child: Text("Available balance: ৳7500.25", style: AppTheme.avlAmtText2, textAlign: TextAlign.center,),)),
                 ],),
