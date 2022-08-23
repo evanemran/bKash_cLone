@@ -33,7 +33,7 @@ class TransactionWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = list[index];
 
-          return Card(margin: const EdgeInsets.all(12.0), elevation: 4.0, color: Colors.white, child: Container(margin: const EdgeInsets.all(12.0),
+          return Card(margin: const EdgeInsets.fromLTRB(12.0, 6, 12.0, 6), elevation: 4.0, color: Colors.white, child: Container(margin: const EdgeInsets.all(12.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

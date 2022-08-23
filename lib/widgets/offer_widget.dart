@@ -21,11 +21,11 @@ class OfferWidget extends StatelessWidget {
         children: [
           SizedBox(height: 140, child: Image.asset(image, fit: BoxFit.fill,)),
           const SizedBox(height: 5.0),
-          Row(children: [Expanded(child: Padding(padding: EdgeInsets.fromLTRB(2,4,2,2), child: Text(title,
+          Row(children: [Expanded(child: Padding(padding: EdgeInsets.fromLTRB(8,4,2,2), child: Text(title,
               style: AppTheme.offerText,
               textAlign: TextAlign.start,
               overflow: TextOverflow.ellipsis),))],),
-          Row(children: [Expanded(child: Padding(padding: EdgeInsets.fromLTRB(2,2,2,4), child: Text(vendor,
+          Row(children: [Expanded(child: Padding(padding: EdgeInsets.fromLTRB(8,2,2,4), child: Text(vendor,
               style: AppTheme.offerVendorText,
               textAlign: TextAlign.start,
               overflow: TextOverflow.ellipsis),))],),

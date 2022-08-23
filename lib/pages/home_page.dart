@@ -1,9 +1,15 @@
+import 'package:barcode_scan2/gen/protos/protos.pb.dart';
+import 'package:barcode_scan2/gen/protos/protos.pbenum.dart';
+import 'package:barcode_scan2/model/android_options.dart';
+import 'package:barcode_scan2/model/scan_options.dart';
+import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:bkash/pages/inbox_page.dart';
 import 'package:bkash/widgets/drawer_widget.dart';
 import 'package:bkash/widgets/home_body_widget.dart';
 import 'package:bkash/widgets/notifications_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../widgets/appbar_widget.dart';
 import '../widgets/bottom_bar_widget.dart';
@@ -29,6 +35,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   int _selectedIndex = 0;
+  // String scanResult = "Not Yet Scanned";
+  ScanResult scanResult = ScanResult();
+
+  static final _possibleFormats = BarcodeFormat.values.toList()
+    ..removeWhere((e) => e == BarcodeFormat.unknown);
+  var _aspectTolerance = 0.00;
+  var _numberOfCameras = 0;
+  var _selectedCamera = -1;
+  var _useAutoFocus = true;
+  var _autoEnableFlash = false;
 
   static const List<Widget> _bottomMenu = <Widget>[
     HomeBodyWidget(),
@@ -54,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    scanResult = this.scanResult;
     return Scaffold(
       /*appBar: const PreferredSize(
         preferredSize: Size.fromHeight(80.0),
@@ -65,11 +82,43 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Scan QR',
         elevation: 2.0,
         backgroundColor: Colors.white,
-        onPressed: () {},
+        onPressed: () { _scan(); },
         child: const Icon(Icons.qr_code, color: Colors.pink, size: 40.0),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBarWidget(onPress: _onItemTapped,),// This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  Future<void> _scan() async{
+    try {
+      final result = await BarcodeScanner.scan(
+        options: ScanOptions(
+          /*strings: {
+            'cancel': _cancelController.text,
+            'flash_on': _flashOnController.text,
+            'flash_off': _flashOffController.text,
+          },*/
+          // restrictFormat: selectedFormats,
+          useCamera: _selectedCamera,
+          autoEnableFlash: _autoEnableFlash,
+          android: AndroidOptions(
+            aspectTolerance: _aspectTolerance,
+            useAutoFocus: _useAutoFocus,
+          ),
+        ),
+      );
+      setState(() => scanResult = result as ScanResult);
+    } on PlatformException catch (e) {
+      setState(() {
+        scanResult = ScanResult(
+          type: ResultType.Error,
+          format: BarcodeFormat.unknown,
+          rawContent: e.code == BarcodeScanner.cameraAccessDenied
+              ? 'The user did not grant the camera permission!'
+              : 'Unknown error: $e',
+        );
+      });
+    }
   }
 }

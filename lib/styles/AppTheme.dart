@@ -10,7 +10,7 @@ class AppTheme{
   TextStyle(fontSize: 20.0,fontWeight:FontWeight.bold, color: Colors.pink,fontFamily: "Roboto");
 
   static final TextStyle ntitleText =
-  TextStyle(fontSize: 16.0,fontWeight:FontWeight.bold, color: Colors.black45,fontFamily: "Roboto");
+  TextStyle(fontSize: 16.0,fontWeight:FontWeight.bold, color: Colors.black54,fontFamily: "Roboto");
 
   static final TextStyle nbodyText =
   TextStyle(fontSize: 16.0,fontWeight:FontWeight.normal, color: Colors.black45,fontFamily: "Roboto");
