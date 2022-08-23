@@ -252,7 +252,7 @@ class HomeBodyWidget extends StatelessWidget {
   }
 
   Widget _buildImageSlider(){
-    return Container(padding: const EdgeInsets.all(8.0), child: CarouselSlider(
+    return Container(padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 12.0), child: CarouselSlider(
       options: CarouselOptions(height: 120.0,
         enableInfiniteScroll: true,
         autoPlay: true,

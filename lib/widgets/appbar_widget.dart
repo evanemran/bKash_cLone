@@ -45,7 +45,7 @@ class AppBarWidgetState extends State<AppBarWidget> {
                 children: [
                   //User Name
                   Text(
-                    'Evan Emran',
+                    ' Evan Emran',
                     style: TextStyle(
                         fontSize: 15,
                         color: Colors.white,

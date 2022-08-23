@@ -23,7 +23,7 @@ class _DetailsPageState extends State<DetailsPage> {
           title: Text(widget.menu.title, style: AppTheme.actionBarText, textAlign: TextAlign.center,),
           backgroundColor: Colors.pink,
         ),
-        body: widget.menu.widget
+        body: Center(child: widget.menu.widget,)
     );
   }
 }
