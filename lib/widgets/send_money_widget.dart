@@ -49,8 +49,15 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(child: Column(
         children: [
+          Card(color: Colors.white, margin: EdgeInsets.all(12), child: Column(children: [
+            Row(children: [Expanded(child: Padding(padding: EdgeInsets.fromLTRB(12,8,12,4), child: Text("For", style: AppTheme.ntitleText,),))],),
+            Row(children: [Expanded(child: Padding(padding: EdgeInsets.fromLTRB(12,8,12,18), child: TextField(
+              decoration: InputDecoration.collapsed(hintText: "Enter name or number", hintStyle: AppTheme.hintText),
+            ),),), Padding(padding: EdgeInsets.fromLTRB(0, 0, 12, 0), child: Icon(Icons.arrow_forward, color: Colors.black45,),)],)
+          ],),),
           Expanded(child: ContactsWidget(list: myNumberlist, title: "My account"))
         ],
       ),),

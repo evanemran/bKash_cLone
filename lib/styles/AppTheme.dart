@@ -38,4 +38,22 @@ class AppTheme{
 
   static final TextStyle actionBarText =
   TextStyle(fontSize: 16.0,fontWeight:FontWeight.bold, color: Colors.white,fontFamily: "Roboto");
+
+  static final TextStyle hintText =
+  TextStyle(fontSize: 16.0,fontWeight:FontWeight.normal, color: Colors.black45,fontFamily: "Roboto");
+
+  static final TextStyle amtHintText =
+  TextStyle(fontSize: 36.0,fontWeight:FontWeight.normal, color: Colors.black45,fontFamily: "Roboto");
+
+  static final TextStyle amtText =
+  TextStyle(fontSize: 36.0,fontWeight:FontWeight.normal, color: Colors.pink,fontFamily: "Roboto");
+
+  static final TextStyle avlAmtText =
+  TextStyle(fontSize: 12.0,fontWeight:FontWeight.normal, color: Colors.black45,fontFamily: "Roboto");
+
+  static final TextStyle avlAmtText2 =
+  TextStyle(fontSize: 16.0,fontWeight:FontWeight.bold, color: Colors.black,fontFamily: "Roboto");
+
+  static final TextStyle priyoText =
+  TextStyle(fontSize: 16.0,fontWeight:FontWeight.normal, color: Colors.pink,fontFamily: "Roboto");
 }
