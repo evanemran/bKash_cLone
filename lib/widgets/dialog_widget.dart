@@ -33,7 +33,7 @@ class DialogWidget extends StatelessWidget {
             Row(children: [Padding(padding: EdgeInsets.fromLTRB(12,8,4,24), child: Text("Confirm to ", style: AppTheme.dialogconfirmText,),), Expanded(child: Padding(padding: EdgeInsets.fromLTRB(0,8,12,24), child: Text("Send Money", style: AppTheme.dialogconfirmTextBold,),))],),
 
             Padding(padding: const EdgeInsets.fromLTRB(18, 12, 12, 24), child: Row(children: [
-              Image.asset("assets/user.png", height: 50, width: 50, fit: BoxFit.fitWidth,),
+              Image.asset("assets/user.png", height: 40, width: 40, fit: BoxFit.fitWidth,),
               const SizedBox(width: 12,),
               Expanded(child: Column(children: [
                 Row(children: [Expanded(child: Padding(padding: const EdgeInsets.fromLTRB(0, 2, 0, 2), child: Text("Ryan Reynolds", style: AppTheme.ntitleText, textAlign: TextAlign.start,),)),
@@ -72,6 +72,7 @@ class DialogWidget extends StatelessWidget {
         AnimatedButton(
           // onComplete: _onConfirmed(context),
           onComplete: () {
+            Navigator.pop(context);
             showDialog(context: context,
                 /*builder: (context) => DialogAnim()*/
                 builder: (context) => const Dialog(
