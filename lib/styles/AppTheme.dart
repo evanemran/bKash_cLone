@@ -10,7 +10,7 @@ class AppTheme{
   TextStyle(fontSize: 20.0,fontWeight:FontWeight.bold, color: Colors.pink,fontFamily: "Roboto");
 
   static final TextStyle ntitleText =
-  TextStyle(fontSize: 14.0,fontWeight:FontWeight.bold, color: Colors.black54,fontFamily: "Roboto");
+  TextStyle(fontSize: 14.0,fontWeight:FontWeight.normal, color: Colors.black87,fontFamily: "Roboto");
 
   static final TextStyle nbodyText =
   TextStyle(fontSize: 14.0,fontWeight:FontWeight.normal, color: Colors.black45,fontFamily: "Roboto");
@@ -52,7 +52,7 @@ class AppTheme{
   TextStyle(fontSize: 12.0,fontWeight:FontWeight.normal, color: Colors.black45,fontFamily: "Roboto");
 
   static final TextStyle avlAmtText2 =
-  TextStyle(fontSize: 16.0,fontWeight:FontWeight.bold, color: Colors.black,fontFamily: "Roboto");
+  TextStyle(fontSize: 16.0,fontWeight:FontWeight.normal, color: Colors.black,fontFamily: "Roboto");
 
   static final TextStyle priyoText =
   TextStyle(fontSize: 16.0,fontWeight:FontWeight.normal, color: Colors.pink,fontFamily: "Roboto");
