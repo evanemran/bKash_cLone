@@ -1,4 +1,5 @@
 import 'package:bkash/styles/AppTheme.dart';
+import 'package:bkash/widgets/confirmation_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -69,44 +70,26 @@ class DialogWidget extends StatelessWidget {
           ],),
         )),
         AnimatedButton(
-          onComplete: _onConfirmed,
+          // onComplete: _onConfirmed(context),
+          onComplete: () {
+            showDialog(context: context,
+                /*builder: (context) => DialogAnim()*/
+                builder: (context) => const Dialog(
+                  insetPadding: EdgeInsets.all(20),
+                  child: ConfirmationWidget(),
+                ));
+          },
         )
       ],),
     );
   }
 
-  void _onConfirmed() {
-    //Do your task whatever you want
-    //As an example, Let's show a dummy dialog
-    /*showDialog(
-        context: context,
-        builder: (context){
-          return Material(
-            type: MaterialType.transparency,
-            child: Center(
-              child: Container(
-                color: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: 32,vertical: 72),
-                margin: EdgeInsets.symmetric(horizontal: 32,vertical: 72),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.check,color:Colors.green,size: 96,),
-                    Center(
-                      child: Text(
-                        "Success",
-                        style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 24,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          );
-        }
-    );*/
+  _onConfirmed(BuildContext context) {
+    showDialog(context: context,
+        /*builder: (context) => DialogAnim()*/
+        builder: (context) => const Dialog(
+          insetPadding: EdgeInsets.all(20),
+          child: ConfirmationWidget(),
+        ));
   }
 }

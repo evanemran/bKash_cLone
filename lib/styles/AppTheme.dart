@@ -66,9 +66,15 @@ class AppTheme{
   static final TextStyle dialogconfirmText =
   TextStyle(fontSize: 18.0,fontWeight:FontWeight.normal, color: Colors.pink,fontFamily: "Roboto");
 
+  static final TextStyle dialogconfirmTextGreen =
+  TextStyle(fontSize: 18.0,fontWeight:FontWeight.normal, color: Colors.green,fontFamily: "Roboto");
+
   static final TextStyle dialogconfirmTextBold =
   TextStyle(fontSize: 18.0,fontWeight:FontWeight.bold, color: Colors.pink,fontFamily: "Roboto");
 
   static final TextStyle sendFinalText =
   TextStyle(fontSize: 16.0,fontWeight:FontWeight.normal, color: Colors.white,fontFamily: "Roboto");
+
+  static final TextStyle callIconText =
+  TextStyle(fontSize: 16.0,fontWeight:FontWeight.normal, color: Colors.pink,fontFamily: "Roboto");
 }
