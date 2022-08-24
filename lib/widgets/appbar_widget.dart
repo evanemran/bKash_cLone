@@ -31,7 +31,7 @@ class AppBarWidgetState extends State<AppBarWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 10.0, left: 12.0),
+                padding: const EdgeInsets.only(top: 10.0, left: 12.0, bottom: 4.0),
                 child: CircleAvatar(
                   radius: 28.0,
                   backgroundColor: Colors.grey[200],

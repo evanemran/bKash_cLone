@@ -24,10 +24,10 @@ class _ConfirmationWidgetState extends State<ConfirmationWidget> {
         future: Future.delayed(Duration(milliseconds: 5000)),
         builder: (context, snapshot) {
 // Checks whether the future is resolved, ie the duration is over
-          if (snapshot.connectionState == ConnectionState.done)
+          if (snapshot.connectionState == ConnectionState.done) {
             return Column(children: [
               Expanded(child: Container(
-                margin: EdgeInsets.fromLTRB(12, 0, 12, 0),
+                margin: EdgeInsets.fromLTRB(12, 40, 12, 0),
                 child: Column(children: [
                   Row(children: [
                     Expanded(child: Column(children: [
@@ -121,18 +121,19 @@ class _ConfirmationWidgetState extends State<ConfirmationWidget> {
               )
 
             ],);
-          else
-            return Container(/*decoration: BoxDecoration(
+          } else {
+            return Container(decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("back.png"),
+                image: AssetImage("assets/kites.gif"),
                 fit: BoxFit.cover
               )
-            )*/color: Colors.white,
+            )/*color: Colors.white*/,
               child: Center(
               child: Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center ,children: [
-                Image.asset("assets/loading.gif", color: Colors.pink, height: 120, width: 120, fit: BoxFit.fill,),
-                Padding(padding: EdgeInsets.fromLTRB(0,8,4,4), child: Text("Processing... ", style: AppTheme.dialogconfirmText,),)
-              ],),),); // Return empty container to avoid build errors
+                Image.asset("assets/loading.gif", color: Colors.white, height: 120, width: 120, fit: BoxFit.fill,),
+                Padding(padding: const EdgeInsets.fromLTRB(0,8,4,4), child: Text("Processing... ", style: AppTheme.sendFinalText,),)
+              ],),),);
+          } // Return empty container to avoid build errors
         }
     );
   }
@@ -245,11 +246,11 @@ class _ConfirmationWidgetState extends State<ConfirmationWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
+      /*appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         automaticallyImplyLeading: false,
-      ),
+      ),*/
       body: _getWidget(context),
     );
   }

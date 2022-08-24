@@ -17,6 +17,7 @@ class AmountPage extends StatefulWidget {
 
 class _AmountPageState extends State<AmountPage> {
   final amountTextController = TextEditingController();
+  Color amtConfirmColor = Colors.black45;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +27,13 @@ class _AmountPageState extends State<AmountPage> {
           centerTitle: true,
           title: Text(widget.menu.title, style: AppTheme.actionBarText, textAlign: TextAlign.center,),
           backgroundColor: Colors.pink,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0, right: 12.0, bottom: 12.0),
+              child: SizedBox(
+                  width: 34, height: 34, child: Image.asset('assets/logo.png')),
+            )
+          ],
         ),
         body: Container(
           margin: EdgeInsets.all(8),
@@ -52,6 +60,18 @@ class _AmountPageState extends State<AmountPage> {
                   const Icon(Icons.arrow_forward, color: Colors.transparent,),
                   Expanded(child: TextField(
                     controller: amountTextController,
+                    onChanged: (text) {
+                      if(amountTextController.text.trim()==""){
+                        setState(() {
+                          amtConfirmColor = Colors.black45;
+                        });
+                      }
+                      else{
+                        setState(() {
+                          amtConfirmColor = Colors.pink;
+                        });
+                      }
+                    },
                     keyboardType: TextInputType.number,
                     cursorColor: Colors.transparent,
                     textAlign: TextAlign.center,
@@ -63,7 +83,7 @@ class _AmountPageState extends State<AmountPage> {
                       context,
                       MaterialPageRoute(builder: (context) => const PinPage(menu: HomeMenu.SEND_MONEY,)),
                     );
-                  }, child: const Icon(Icons.arrow_forward, color: Colors.black45, size: 32,),)
+                  }, child: Icon(Icons.arrow_forward, color: amtConfirmColor, size: 32,),)
                 ],),),
                 Row(children: [Expanded(child: Padding(padding: EdgeInsets.fromLTRB(12,8,0,12), child: Text("Available balance: ৳7500.25", style: AppTheme.avlAmtText2, textAlign: TextAlign.center,),)),
                 ],),

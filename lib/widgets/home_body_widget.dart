@@ -103,7 +103,7 @@ class HomeBodyWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Row(children: [const Expanded(child: Text('My bKash')), Text('See All', style: AppTheme.homeHintText,)],),
+                      child: Row(children: [const Expanded(child: Text('My bKash')), InkWell(child: Text('See All', style: AppTheme.homeHintText,), onTap: () {showCustomBottomSheet(context, mybKashList, 'Recent activities');},)],),
                     ),
                     Container(
                       height: 80, //need to adjust dynamic height
@@ -170,6 +170,7 @@ class HomeBodyWidget extends StatelessWidget {
             _buildImageSlider(),
 
 
+            //suggestions
             Card(
               color: Colors.white,
               margin: const EdgeInsets.only(left: 12.0, right: 12.0, bottom: 12.0),
@@ -181,7 +182,7 @@ class HomeBodyWidget extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Row(children: [const Expanded(child: Text('Suggestions')), InkWell(child: Text('See All', style: AppTheme.homeHintText,), onTap: () {showCustomBottomSheet(context, suggestionList);},)],),
+                      child: Row(children: [const Expanded(child: Text('Suggestions')), InkWell(child: Text('See All', style: AppTheme.homeHintText,), onTap: () {showCustomBottomSheet(context, suggestionList, 'All Suggestions');},)],),
                     ),
                     Container(
                       height: 80, //need to adjust dynamic height
@@ -281,15 +282,17 @@ class HomeBodyWidget extends StatelessWidget {
     ),);
   }
 
-  void showCustomBottomSheet(BuildContext context, List<HomeMenu> list) {
+  void showCustomBottomSheet(BuildContext context, List<HomeMenu> list, String title) {
     showModalBottomSheet<void>(
       context: context,
       builder: (BuildContext context) {
         return Container(
           height: 400,
           color: Colors.white,
-          child: Center(
-            child: GridView.count(
+          child: Column(children: [
+            Padding(padding: EdgeInsets.fromLTRB(20,10,20,10), child: Row(children: [Text(title), Expanded(child:
+            InkWell(child: Text('See All', style: AppTheme.homeHintText, textAlign: TextAlign.end,), onTap: () {},))],),),
+            Expanded(child: GridView.count(
               // Create a grid with 2 columns. If you change the scrollDirection to
               // horizontal, this produces 2 rows.
               crossAxisCount: 3,
@@ -301,8 +304,8 @@ class HomeBodyWidget extends StatelessWidget {
                       image: list[index].icon),
                 );
               }),
-            ),
-          ),
+            ))
+          ],),
         );
       },
     );

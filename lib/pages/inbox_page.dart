@@ -24,6 +24,13 @@ class _InboxPageState extends State<InboxPage> {
         appBar: AppBar(
           centerTitle: true,
           title: Text("Inbox", textAlign: TextAlign.center, style: AppTheme.actionBarText,),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0, right: 12.0, bottom: 12.0),
+              child: SizedBox(
+                  width: 34, height: 34, child: Image.asset('assets/logo.png')),
+            )
+          ],
           bottom: const TabBar(
             tabs: [
               Tab(text: "Notifications",),

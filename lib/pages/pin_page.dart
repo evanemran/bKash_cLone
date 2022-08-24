@@ -28,6 +28,13 @@ class _PinPageState extends State<PinPage> {
           centerTitle: true,
           title: Text(widget.menu.title, style: AppTheme.actionBarText, textAlign: TextAlign.center,),
           backgroundColor: Colors.pink,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0, right: 12.0, bottom: 12.0),
+              child: SizedBox(
+                  width: 34, height: 34, child: Image.asset('assets/logo.png')),
+            )
+          ],
         ),
         body: Container(
           margin: EdgeInsets.all(8),
