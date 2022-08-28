@@ -1,6 +1,8 @@
-# bkash
+# bkash App Clone
 
-A new Flutter project.
+This is a clone app of the popular MFS app "bKash"
+
+<img src = "assets/screenshot.png">
 
 ## Getting Started
 
