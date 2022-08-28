@@ -18,31 +18,31 @@ class SendMoneyWidget extends StatefulWidget {
 class _SendMoneyWidgetState extends State<SendMoneyWidget> {
 
   final List<AppContact> myNumberlist = [
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "My Contacts", cNumber: "01873365544", cName: "Evan Emran"),
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "My Contacts", cNumber: "01873365544", cName: "Evan Emran"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "My Contacts", cNumber: "01123456789", cName: "Evan Emran"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "My Contacts", cNumber: "01123456789", cName: "Evan Emran"),
 
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Recents", cNumber: "01123456789", cName: "Ryan Reynolds"),
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Recents", cNumber: "01123456789", cName: "Ryan Reynolds"),
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Recents", cNumber: "01523456789", cName: "Narendra Modi"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Recents", cNumber: "01123456789", cName: "Tony Stark"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Recents", cNumber: "01123456789", cName: "Elon Musk"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Recents", cNumber: "01123456789", cName: "Carl Pei"),
 
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01966317117", cName: "Atmaram"),
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01966317117", cName: "Atmaram"),
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01612374023", cName: "Abuklau"),
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01612374023", cName: "Abuklau"),
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01612374023", cName: "Abuklau"),
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01612374023", cName: "Abuklau"),
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01612374023", cName: "Abuklau"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01123456789", cName: "Anik"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01123456789", cName: "Amar"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01123456789", cName: "Akbar"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01123456789", cName: "Anthony"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01123456789", cName: "Alfred"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01123456789", cName: "Arthur"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01123456789", cName: "Abuklau"),
   ];
 
   final List<AppContact> recentList = [
     AppContact(cId: "0", cImage: "assets/user.png", cType: "Recents", cNumber: "01123456789", cName: "Ryan Reynolds"),
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Recents", cNumber: "01523456789", cName: "Narendra Modi"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Recents", cNumber: "01123456789", cName: "Narendra Modi"),
 
   ];
 
   final List<AppContact> allContacts = [
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01966317117", cName: "Atmaram"),
-    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01612374023", cName: "Abuklau"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01123456789", cName: "Atmaram"),
+    AppContact(cId: "0", cImage: "assets/user.png", cType: "Contacts", cNumber: "01123456789", cName: "Abuklau"),
 
   ];
 
