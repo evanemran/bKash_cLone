@@ -1,12 +1,7 @@
 import 'package:bkash/enums/home_menu.dart';
 import 'package:bkash/models/contact.dart';
-import 'package:bkash/models/notifications.dart';
-import 'package:bkash/models/transaction.dart';
 import 'package:bkash/pages/amount_page.dart';
 import 'package:bkash/styles/AppTheme.dart';
-import 'package:bkash/utils/TextUtils.dart';
-import 'package:bkash/widgets/send_money_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ContactsWidget extends StatelessWidget {
@@ -46,7 +41,7 @@ class ContactsWidget extends StatelessWidget {
               return InkWell(onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const AmountPage(menu: HomeMenu.SEND_MONEY,)),
+                  MaterialPageRoute(builder: (context) => const AmountPage(menu: HomeMenu.sendMoney,)),
                 );
               },
                 child: Container(margin: const EdgeInsets.all(12.0),
