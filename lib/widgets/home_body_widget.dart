@@ -26,31 +26,31 @@ class HomeBodyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
 
     List<HomeMenu> homeMenuList = [
-      HomeMenu.SEND_MONEY,
-      HomeMenu.CASH_OUT,
-      HomeMenu.TOP_UP,
-      HomeMenu.PAYMENT,
+      HomeMenu.sendMoney,
+      HomeMenu.cashOut,
+      HomeMenu.topUp,
+      HomeMenu.payment,
 
-      HomeMenu.ADD_MONEY,
-      HomeMenu.PAY_BILL,
-      HomeMenu.TICKETS,
-      HomeMenu.MORE,
+      HomeMenu.addMoney,
+      HomeMenu.payBill,
+      HomeMenu.tickets,
+      HomeMenu.more,
     ];
 
     List<HomeMenu> mybKashList = [
-      HomeMenu.TOPUP,
-      HomeMenu.SHWAPNO,
-      HomeMenu.INTERNET,
-      HomeMenu.CARD,
-      HomeMenu.ACCOUNT,
+      HomeMenu.topUp,
+      HomeMenu.shwapno,
+      HomeMenu.internet,
+      HomeMenu.card,
+      HomeMenu.account,
     ];
 
     List<HomeMenu> suggestionList = [
-      HomeMenu.BTCL,
-      HomeMenu.AKASH,
-      HomeMenu.AJKER_DEAL,
-      HomeMenu.DARAZ,
-      HomeMenu.STYLINE,
+      HomeMenu.btcl,
+      HomeMenu.akash,
+      HomeMenu.ajkelDeal,
+      HomeMenu.daraz,
+      HomeMenu.styline,
     ];
 
 
