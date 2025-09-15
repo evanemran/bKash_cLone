@@ -2,7 +2,7 @@ name: Flutter Android Build
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build:
