@@ -8,25 +8,28 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'bKash',
+      title: 'bKash Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.pink,
+        useMaterial3: false,
       ),
-      home: const MyHomePage(title: 'bKash'),
+      builder: (context, child) => Banner(
+        message: 'DEMO • SIMULATION ONLY',
+        location: BannerLocation.topEnd,
+        color: Colors.deepOrange,
+        textStyle: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 9,
+          letterSpacing: 0.4,
+        ),
+        child: child ?? const SizedBox.shrink(),
+      ),
+      home: const MyHomePage(title: 'bKash Demo'),
     );
   }
 }

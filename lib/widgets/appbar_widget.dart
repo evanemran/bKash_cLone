@@ -1,139 +1,129 @@
-import 'package:bkash/widgets/appbar_widget.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:bkash/models/demo_profile.dart';
 import 'package:flutter/material.dart';
 
-
 class AppBarWidget extends StatefulWidget {
-  const AppBarWidget({
-    Key? key,
-  }) : super(key: key);
+  const AppBarWidget({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => AppBarWidgetState();
-
+  State<AppBarWidget> createState() => _AppBarWidgetState();
 }
 
-class AppBarWidgetState extends State<AppBarWidget> {
-  final GlobalKey<AppBarWidgetState> appBar_key = new GlobalKey<AppBarWidgetState>();
-  bool _isAnimation = false;
-  bool _isBalanceShown = false;
-  bool _isBalance = true;
+class _AppBarWidgetState extends State<AppBarWidget> {
+  bool _balanceVisible = false;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      key: appBar_key,
+      toolbarHeight: 80,
       flexibleSpace: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0, left: 12.0, bottom: 4.0),
-                child: CircleAvatar(
-                  radius: 28.0,
-                  backgroundColor: Colors.grey[200],
-                  backgroundImage: const AssetImage('assets/profile.png'),
+          padding: const EdgeInsets.fromLTRB(12, 8, 8, 4),
+          child: ValueListenableBuilder<DemoProfile>(
+            valueListenable: demoProfile,
+            builder: (context, profile, _) => Row(
+              children: [
+                const CircleAvatar(
+                  radius: 25,
+                  backgroundImage: AssetImage('assets/profile.png'),
                 ),
-              ),
-              const SizedBox(width: 14.0),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  //User Name
-                  Text(
-                    ' Evan Emran',
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-
-                  //Button
-                  InkWell(
-                      onTap: animate,
-                      child: Container(
-                          width: 160,
-                          height: 28,
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Flexible(
+                            child: Text(
+                              profile.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 6),
+                          const _DemoBadge(),
+                        ],
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        '${profile.phoneNumber}  •  ${profile.formattedTime}',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 11,
+                          color: Colors.white70,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      InkWell(
+                        borderRadius: BorderRadius.circular(20),
+                        onTap: () => setState(
+                          () => _balanceVisible = !_balanceVisible,
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 3,
+                          ),
                           decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Stack(alignment: Alignment.center, children: [
-                            //Amount
-                            AnimatedOpacity(
-                                opacity: _isBalanceShown ? 1 : 0,
-                                duration: Duration(milliseconds: 500),
-                                child: Text('৳ 7500.25',
-                                    style: TextStyle(
-                                        color: Colors.pink, fontSize: 14))),
-
-                            //Balance
-                            AnimatedOpacity(
-                                opacity: _isBalance ? 1 : 0,
-                                duration: const Duration(milliseconds: 300),
-                                child: const Text('Tap for balance',
-                                    style: TextStyle(
-                                        color: Colors.pink, fontSize: 14))),
-
-                            //Circle
-                            AnimatedPositioned(
-                                duration: const Duration(milliseconds: 1100),
-                                left: _isAnimation == false ? 5 : 135,
-                                curve: Curves.fastOutSlowIn,
-                                child: Container(
-                                    height: 20,
-                                    width: 20,
-                                    // padding: const EdgeInsets.only(bottom: 4),
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        color: Colors.pink,
-                                        borderRadius: BorderRadius.circular(50)),
-                                    child: const FittedBox(
-                                        child: Text('৳',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 17)))))
-                          ])))
-                ],
-              ),
-            ],
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            _balanceVisible
+                                ? 'ডেমো ব্যালেন্স: ৳ ${profile.formattedBalance}'
+                                : 'ডেমো ব্যালেন্স দেখতে ট্যাপ করুন',
+                            style: const TextStyle(
+                              color: Colors.pink,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
       actions: [
-        Padding(
-          padding: const EdgeInsets.only(top: 12.0, right: 12.0),
-          child: InkWell(onTap:  Scaffold.of(context).openEndDrawer, child: SizedBox(
-              width: 34, height: 34, child: Image.asset('assets/rewards.png')),),
+        IconButton(
+          tooltip: 'ডেমো মেনু',
+          onPressed: () => Scaffold.of(context).openEndDrawer(),
+          icon: Image.asset('assets/logo.png', width: 30, height: 30),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 12.0, right: 12.0),
-          child: InkWell(onTap:  Scaffold.of(context).openEndDrawer, child: SizedBox(
-              width: 34, height: 34, child: Image.asset('assets/logo.png')),),
-        )
       ],
     );
   }
+}
 
-  void animate() async {
-    _isAnimation = true;
-    _isBalance = false;
-    setState(() {});
+class _DemoBadge extends StatelessWidget {
+  const _DemoBadge();
 
-    await Future.delayed(Duration(milliseconds: 800),
-            () => setState(() => _isBalanceShown = true));
-    await Future.delayed(
-        Duration(seconds: 3), () => setState(() => _isBalanceShown = false));
-    await Future.delayed(Duration(milliseconds: 200),
-            () => setState(() => _isAnimation = false));
-    await Future.delayed(
-        Duration(milliseconds: 800), () => setState(() => _isBalance = true));
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: const Text(
+        'DEMO',
+        style: TextStyle(
+          color: Colors.pink,
+          fontSize: 9,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
   }
-
 }
