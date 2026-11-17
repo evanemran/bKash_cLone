@@ -96,3 +96,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+cd bKash-Artifact-2.0
+flutter pub get
+flutter build apk --release
